@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot --port 8090 --config webpack.config.browser.js",
     "build": "webpack --mode production --config webpack.config.electron.js",
-    "electron": "electron .",
+    "electron": "electron . ./src/data/contacts",
     "electron-start": "node src/start-react"
   },
   "author": "",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
