@@ -5,6 +5,8 @@ import {remote} from "electron"
 import os from "os"
 
 
+
+const SEPARATOR = " ";
 const fileName = remote.process.argv.slice(2)[0];
 
 
@@ -33,7 +35,7 @@ class ContactsRepository {
                         .toString()
                         .split(os.EOL)
                         .map(line => {
-                            const idx = line.indexOf(" ");
+                            const idx = line.indexOf(SEPARATOR);
                             return (idx == -1) ? null : {number: line.slice(0, idx), name: line.slice(idx + 1)};
                         })
                         //Можно добавить RegEx
