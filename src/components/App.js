@@ -7,6 +7,8 @@ import ContactsRepository from "../data/repositoryBrowser"
 import Header from "./Header"
 import Contacts from "./Contacts"
 
+import ContactsContext from "../context/ContactsContext"
+
 const theme = {
     backgroundColor: "black",
     primaryTextColor: "white",
@@ -29,6 +31,12 @@ export default (props) => {
     const contactsRepository = new ContactsRepository();
 
     const [contacts, setContacts] = useState([]);
+
+    const ContactsContextValue = {
+        contacts: contacts,
+        addOne: ({name, number}) => {},
+        removeByIdx: (idx) => {},
+    }
 
     const addContact = async (number, name) => {
         const result = await contactsRepository.save(number, name);
@@ -55,10 +63,12 @@ export default (props) => {
 
     return (
         <ThemeProvider theme={theme}>
+        <ContactsContext.Provider value={ContactsContextValue}>
             <AppContainer>
                 <Header/>
-                
+                <Contacts/>
             </AppContainer>
+        </ContactsContext.Provider>
         </ThemeProvider>
     )
 }

@@ -16,7 +16,7 @@ if (!fs.existsSync(fileName)) {
 class ContactsRepository {
     constructor() {}
 
-    async save(number, name) {
+    async save({name, number}) {
         const data = `${number} ${name}`;
         try {
             fs.appendFileSync(fileName, data);

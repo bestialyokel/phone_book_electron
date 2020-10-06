@@ -10,7 +10,7 @@ class ContactsRepository {
         ];
     }
 
-    async save(number, name) {
+    async save({number, name}) {
         this._contacts.push({name, number});
         return 1;
     }
