@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
-import { Route, HashRouter, Switch, Redirect } from 'react-router-dom'
+import styled, {ThemeContext, ThemeProvider} from "styled-components"
 
+import ContactsRepository from "../data/repositoryBrowser"
 
-import ContactsRepository from "../data/repositoryElectron"
+import Header from "./Header"
+import Contacts from "./Contacts"
 
+const theme = {
+    backgroundColor: "black",
+    primaryTextColor: "white",
+    disabledColor: "grey",
+    secondaryTextColor: "grey",
+    specialTextColor: "blue",
+    fontBase: "10px"
+}
 
-
-const AddButton = (props) => {}
-const Profile = (props) => {}
-const SearchBar = (props) => {}
-const ContactsList = (props) => {}
-const LetterLine = (props) => {}
-const ContactLine = (props) => {}
-
+const AppContainer = styled.div`
+    background-color: ${props => props.theme.backgroundColor};
+    width: 100%;
+    height: 100%;
+    color: ${props => props.theme.primaryTextColor};
+    font-size: ${props => props.theme.fontBase};
+`
 
 export default (props) => {
 
@@ -45,10 +53,12 @@ export default (props) => {
 
 
 
-    return contacts.map(x => {
-
-
-
-        return (<div>{`${x.name} ${x.number}`}</div>)
-    })
+    return (
+        <ThemeProvider theme={theme}>
+            <AppContainer>
+                <Header/>
+                
+            </AppContainer>
+        </ThemeProvider>
+    )
 }
