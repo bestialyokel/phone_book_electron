@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot --port 8090 --config webpack.config.browser.js",
-    "build": "webpack --mode production --config webpack.config.electron.js",
+    "build": "webpack --mode development --config webpack.config.electron.js",
     "electron": "electron . ./src/data/contacts",
     "electron-start": "node src/start-react"
   },

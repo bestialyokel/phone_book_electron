@@ -8,6 +8,14 @@ import ContactsRepository from "../data/repositoryElectron"
 
 
 
+const AddButton = (props) => {}
+const Profile = (props) => {}
+const SearchBar = (props) => {}
+const ContactsList = (props) => {}
+const LetterLine = (props) => {}
+const ContactLine = (props) => {}
+
+
 export default (props) => {
 
     const contactsRepository = new ContactsRepository();
@@ -26,10 +34,11 @@ export default (props) => {
     useEffect(() => {
 
         (async () => {
-            const data = await contactsRepository.getAll().sort((a, b) => a.name.localeCompare(b.name))
-
+            const data = (await contactsRepository.getAll() )
+                            .sort((a, b) => a.name.localeCompare(b.name));
 
             setContacts(data);
+
         })()
 
     }, []);
@@ -40,6 +49,6 @@ export default (props) => {
 
 
 
-        return (<div>{x}</div>)
+        return (<div>{`${x.name} ${x.number}`}</div>)
     })
 }
