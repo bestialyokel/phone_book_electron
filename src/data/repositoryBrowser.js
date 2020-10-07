@@ -18,6 +18,9 @@ class ContactsRepository {
     async getAll() {
         return this._contacts;
     }
+
+
+    async update({id, name}) {}
 }
 
 export default ContactsRepository;

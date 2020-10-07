@@ -8,6 +8,7 @@ import Header from "./Header"
 import Contacts from "./Contacts"
 
 import ContactsContext from "../context/ContactsContext"
+import SearchContext from "../context/SearchContext"
 
 const theme = {
     backgroundColor: "black",
@@ -24,6 +25,8 @@ const AppContainer = styled.div`
     height: 100%;
     color: ${props => props.theme.primaryTextColor};
     font-size: ${props => props.theme.fontBase};
+
+    padding: 0 30px;
 `
 
 export default (props) => {
@@ -31,21 +34,18 @@ export default (props) => {
     const contactsRepository = new ContactsRepository();
 
     const [contacts, setContacts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState( String() );
+
+    const SearchContextValue = {
+        searchQuery,
+        setSearchQuery
+    };
 
     const ContactsContextValue = {
         contacts: contacts,
         addOne: ({name, number}) => {},
         removeByIdx: (idx) => {},
-    }
-
-    const addContact = async (number, name) => {
-        const result = await contactsRepository.save(number, name);
-
-        if (!result) {
-            return;
-        }
-
-    }
+    };
 
     useEffect(() => {
 
@@ -64,10 +64,12 @@ export default (props) => {
     return (
         <ThemeProvider theme={theme}>
         <ContactsContext.Provider value={ContactsContextValue}>
+        <SearchContext.Provider value={SearchContextValue}>
             <AppContainer>
                 <Header/>
                 <Contacts/>
             </AppContainer>
+        </SearchContext.Provider>
         </ContactsContext.Provider>
         </ThemeProvider>
     )
