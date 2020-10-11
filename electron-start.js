@@ -3,9 +3,10 @@ const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
 
-let mainWindow
+let mainWindow;
 
-//Menu.setApplicationMenu(false)
+
+Menu.setApplicationMenu()
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -13,9 +14,12 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true
-    }
+      enableRemoteModule: true,
+      worldSafeExecuteJavaScript: true,
+    },
+
   })
+
 
   mainWindow.loadURL(
     process.env.ELECTRON_START_URL ||

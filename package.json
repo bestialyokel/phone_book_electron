@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot --port 8090 --config webpack.config.browser.js",
-    "build": "webpack --mode development --config webpack.config.electron.js",
-    "electron": "electron . ./src/data/contacts",
+    "build": "webpack --mode production --config webpack.config.electron.js",
+    "electron": "electron . ./src/data/contacts.txt",
     "electron-start": "node src/start-react"
   },
   "author": "",
@@ -26,6 +26,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.11.1",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.5.0",
     "webpack": "^4.44.2",
